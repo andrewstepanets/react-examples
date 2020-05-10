@@ -1,2 +1,2 @@
-# counter-react
-Simple project using react, simple counter
+# Some react examples
+Simple projects using react
