@@ -16,7 +16,7 @@ function App() {
     return setCount(count - decrement);
   }
 
- 
+ const resetCount = () => setCount(0);
 
   return (
     <div className="App">
@@ -30,6 +30,7 @@ function App() {
       <ButtonMinus decrement={10} onClickFunction={decrementCount}/>
       <ButtonMinus decrement={100} onClickFunction={decrementCount}/>
       <ButtonMinus decrement={1000} onClickFunction={decrementCount}/>
+      <button onClick={resetCount}>RESET</button>
       <div>
         <span>{count}</span>
       </div>
