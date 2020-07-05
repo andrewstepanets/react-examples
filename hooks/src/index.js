@@ -27,18 +27,26 @@ const App = () => {
     }  
 };
 
-const PlanetInfo = ({ id }) => {
-    const [ name, setName ] = useState(null);
+// creating personal hook
 
+const usePlanetInfo = (id) => {
+    const [name, setName] = useState(null);
     useEffect(() => {
         let cancelled = false; // используем эту переменную пока еще обрабатывается
-                                // запрос к серверу, чтобы одновременно не слать 2 запроса
+        // запрос к серверу, чтобы одновременно не слать 2 запроса
         fetch(`https://swapi.dev/api/planets/${id}`)
             .then(res => res.json())
             .then(data => !cancelled && setName(data.name));
         return () => cancelled = true;
     }, [id]);
-        
+
+    return name;
+}; 
+
+const PlanetInfo = ({ id }) => {
+    
+    const name = usePlanetInfo(id);
+
         return (
             <div>
                 {id} - {name}
