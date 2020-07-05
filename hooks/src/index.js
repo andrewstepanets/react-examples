@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, Component } from 'react';
 import ReactDOM from 'react-dom';
 
 const App = () => {
@@ -27,29 +27,63 @@ const App = () => {
     }  
 };
 
+// creating analog getPlanet use personal hook
+
+const getPlanet = (id) => {
+    return fetch(`https://swapi.dev/api/planets/${id}`)
+        .then(res => res.json())
+        .then(data => data);
+};
+
+const useRequest = (request) => {
+    const initialState = useMemo(() => ({
+                                            data: null,
+                                            loading: true,
+                                            error: null
+                                        }), []);
+    const [dataState, setDataState] = useState(initialState);
+    useEffect(() => {
+        setDataState(initialState);
+        let cancelled = false; // используем эту переменную пока еще обрабатывается
+        // запрос к серверу, чтобы одновременно не слать 2 запроса
+        request()
+            .then(data => !cancelled && setDataState({
+                data,
+                loading: false,
+                error: null
+            }))
+            .catch(error => !cancelled && setDataState({
+                data: null,
+                loading: false,
+                error
+            }))
+        return () => cancelled = true;
+    }, [request, initialState]);
+
+    return dataState;
+};
+
 // creating personal hook
 
 const usePlanetInfo = (id) => {
-    const [name, setName] = useState(null);
-    useEffect(() => {
-        let cancelled = false; // используем эту переменную пока еще обрабатывается
-        // запрос к серверу, чтобы одновременно не слать 2 запроса
-        fetch(`https://swapi.dev/api/planets/${id}`)
-            .then(res => res.json())
-            .then(data => !cancelled && setName(data.name));
-        return () => cancelled = true;
-    }, [id]);
-
-    return name;
+    const request = useCallback(() => getPlanet(id), [id]);
+    return useRequest(request);
 }; 
 
 const PlanetInfo = ({ id }) => {
     
-    const name = usePlanetInfo(id);
+    const { data, loading, error } = usePlanetInfo(id);
+
+    if(error) {
+        return <div>Something is wrong</div>
+    } 
+    if(loading) {
+        return <div>loading...</div>
+    }
 
         return (
             <div>
-                {id} - {name}
+                {id} - {data.name}
             </div>
         );
 };
