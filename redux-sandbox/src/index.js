@@ -1,3 +1,5 @@
+import { createStore } from 'redux';
+
 
 const reducer = (state = 0, action) => {
 
@@ -9,12 +11,18 @@ const reducer = (state = 0, action) => {
   }
 };
 
-let state = reducer(undefined, {});
-console.log(state);
+const store = createStore(reducer);
+// initial State our app
+console.log(store.getState());
+
+// get information aboute updating store
+store.subscribe(() => {
+  console.log(store.getState());
+});
 
 
-state = reducer(state, { type: 'INC' });
-console.log(state);
+// increment + 1
 
-state = reducer(state, { type: 'INC' });
-console.log(state);
+store.dispatch({type: 'INC'});
+store.dispatch({type: 'INC'});
+
