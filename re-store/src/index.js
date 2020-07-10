@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './components/app';
+import Spinner from './components/spinner';
 
 ReactDOM.render(
   <div>
-    <h1>Re-Store</h1>
+    <Spinner />
+    <App />
   </div>,
   document.getElementById('root')
 );
