@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './book-list-item.css';
 
 const BookListItem = ({ book }) => {
@@ -11,7 +11,7 @@ const BookListItem = ({ book }) => {
                 <img src={coverImage} alt={title}/>
             </div>
             <div className="book-details">
-                <a href="#" className="book-title">{title}</a>
+                <span className="book-title">{title}</span>
                 <div className="book-author">
                     {author}
                 </div>
