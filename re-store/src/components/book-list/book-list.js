@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Spinner from '../spinner';
 
 import { withBookstoreService } from '../hoc';
-import { booksLoaded } from '../../actions';
+import { booksLoaded, booksRequested } from '../../actions';
 import { compose } from '../../utils';
 import './book-list.css';
 
@@ -13,7 +13,8 @@ class BookList extends Component {
 
     componentDidMount(){
         // 1. receive data
-        const { bookstoreService, booksLoaded } = this.props;
+        const { bookstoreService, booksLoaded, booksRequested } = this.props;
+        booksRequested();
         bookstoreService.getBooks()
             .then((data) => {
                 // 2. dispatch action to store
@@ -43,7 +44,8 @@ const mapStateToProps = ({ books, loading }) => {
 };
 
 const mapDispatchToProps = {
-    booksLoaded
+    booksLoaded,
+    booksRequested
 };
 
 export default compose(
