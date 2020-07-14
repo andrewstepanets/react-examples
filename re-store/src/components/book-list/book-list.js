@@ -5,7 +5,7 @@ import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
 
 import { withBookstoreService } from '../hoc';
-import { fetchBooks, booksAddedToCart } from '../../actions';
+import { fetchBooks, bookAddedToCart } from '../../actions';
 import { compose } from '../../utils';
 import './book-list.css';
 
@@ -54,7 +54,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     const { bookstoreService } = ownProps;
     return {
             fetchBooks: fetchBooks(bookstoreService, dispatch),
-        onAddedToCart: (id) => dispatch(booksAddedToCart(id))
+        onAddedToCart: (id) => dispatch(bookAddedToCart(id))
         };
 };
 
