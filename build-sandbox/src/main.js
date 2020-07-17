@@ -1,9 +1,10 @@
 class App {
-    run() {
-        const name = 'Andrew';
-        console.log(`Hello ${name}`);
-        
+    constructor(){
+        this.run = (name = 'Andrew') => {
+            console.log(`Hello ${name}`);
+        }
     }
+    
 }
 
 const app = new App();
