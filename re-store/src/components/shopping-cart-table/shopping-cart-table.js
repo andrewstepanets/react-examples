@@ -8,7 +8,7 @@ import './shopping-cart-table.css';
 
 const ShoppingCartTable = ({ items, total, onIncrease, onDecrease, onDelete }) => {
     const renderRow = (item, idx) => {
-                            const { id, title, count, total } = item;
+        const { id, title, count, total } = item;
                             
                             return (
                                 <tr key={id}>
@@ -35,8 +35,9 @@ const ShoppingCartTable = ({ items, total, onIncrease, onDecrease, onDelete }) =
                                     </td>
                                 </tr>
                             );
-                        }
+                        };
     return (
+        
         <div className="shopping-cart-table">
             <h2>Your Order</h2>
             <table className="table">
