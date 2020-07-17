@@ -1,11 +1,10 @@
 class App {
-    constructor(){
-        this.run = (name = 'Andrew') => {
+        run = async (name = 'Andrew') => {
             console.log(`Hello ${name}`);
         }
-    }
-    
 }
 
 const app = new App();
-app.run();
+app.run()
+    .then(() => console.log('DONE'))
+    .catch(() => console.log('ERROR!'));
