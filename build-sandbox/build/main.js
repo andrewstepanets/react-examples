@@ -4,35 +4,31 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var App = function App() {
-  _classCallCheck(this, App);
+class App {
+  constructor() {
+    _defineProperty(this, "run", /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(name = 'Andrew') {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              console.log("Hello ".concat(name));
 
-  _defineProperty(this, "run", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    var name,
-        _args = arguments;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            name = _args.length > 0 && _args[0] !== undefined ? _args[0] : 'Andrew';
-            console.log("Hello ".concat(name));
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee);
+      }));
 
-          case 2:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  })));
-};
+      return function () {
+        return _ref.apply(this, arguments);
+      };
+    }());
+  }
 
-var app = new App();
-app.run().then(function () {
-  return console.log('DONE');
-}).catch(function () {
-  return console.log('ERROR!');
-});
+}
+
+const app = new App();
+app.run().then(() => console.log('DONE')).catch(() => console.log('ERROR!'));

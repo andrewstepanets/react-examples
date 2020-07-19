@@ -9,8 +9,9 @@
           //   "last 2 chrome versions",
           //   "last 2 firefox versions",
           //   "last 2 ios versions"
-          // browser supporting more than 0.3% of people
-          "> 0.3%"
+          // browser supporting more than 0.3% of people not IE
+          "> 0.3%",
+          "not ie > 0"
         ]
       }
     ]
