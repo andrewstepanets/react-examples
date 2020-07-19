@@ -3,10 +3,15 @@
     [
       "@babel/preset-env",
       {
-        "targets": {
-          "edge": "18",
-          "chrome": "74"
-        }
+        "debug": true,
+        "targets": [
+          // last 2 version browsers
+          //   "last 2 chrome versions",
+          //   "last 2 firefox versions",
+          //   "last 2 ios versions"
+          // browser supporting more than 0.3% of people
+          "> 0.3%"
+        ]
       }
     ]
   ],
