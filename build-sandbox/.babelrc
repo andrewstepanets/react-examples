@@ -3,7 +3,10 @@
     [
       "@babel/preset-env",
       {
-        "debug": true
+        "corejs": 3,
+        "useBuiltIns": "usage",
+        "debug": true,
+        "modules": false
         // "targets": [
         // last 2 version browsers
         //   "last 2 chrome versions",
@@ -14,7 +17,8 @@
         //   "not ie > 0"
         // ]
       }
-    ]
+    ],
+    "@babel/react"
   ],
   "plugins": ["@babel/proposal-class-properties"]
 }

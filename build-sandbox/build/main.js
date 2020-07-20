@@ -1,15 +1,6 @@
-"use strict";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+const App = () => /*#__PURE__*/React.createElement("h1", null, "Hello world");
 
-class App {
-  constructor() {
-    _defineProperty(this, "run", async (name = 'Andrew') => {
-      console.log(`Hello ${name}`);
-    });
-  }
-
-}
-
-const app = new App();
-app.run().then(() => console.log('DONE')).catch(() => console.log('ERROR!'));
+ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.getElementById('root'));
