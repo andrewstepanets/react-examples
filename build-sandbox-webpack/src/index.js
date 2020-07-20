@@ -10,6 +10,9 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import css from './main.scss';
+
+console.log(css.toString());
 
 const App = () => <h1>Hello world</h1>;
 

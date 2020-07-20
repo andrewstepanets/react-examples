@@ -2,6 +2,7 @@ module.exports = {
     mode: "development",
     module: {
         rules: [
+            // loading babel
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -36,6 +37,23 @@ module.exports = {
                             name: '[name]-[sha1:hash:7].[ext]'
                         }
                     }
+                ]
+            },
+            // Loading CSS
+            {
+                test: /\.(css)$/,
+                use: [
+                    { loader: 'style-loader' },
+                    { loader: 'css-loader' }
+                ]
+            },
+            // Loading SASS/SCSS
+            {
+                test: /\.(s[ca]ss)$/,
+                use: [
+                    { loader: 'style-loader' },
+                    { loader: 'css-loader' },
+                    { loader: 'sass-loader' }
                 ]
             }
         ]
