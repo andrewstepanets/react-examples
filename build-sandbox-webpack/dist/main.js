@@ -130,7 +130,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"476f566ddfa8a6e782dfdcbcc652a4cb.png\");\n\n//# sourceURL=webpack:///./src/react.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"images/react-5113ea9.png\");\n\n//# sourceURL=webpack:///./src/react.png?");
 
 /***/ })
 
