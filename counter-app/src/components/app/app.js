@@ -23,8 +23,6 @@ const Counter = () => {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="offset-md-2">
-                    </div>
                     <div className="col-md-10 text-center">
                         <Header />
                         <Button 
@@ -53,7 +51,6 @@ const Counter = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="offset-md-2"></div>
                     <div className="col-md-10 text-center">
                         <Button
                             value={1}
@@ -81,15 +78,11 @@ const Counter = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="offset-md-2">
-                    </div>
                     <div className="col-md-10 text-center">
                         <h2>{count}</h2>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="offset-md-2">
-                    </div>
                     <div className="col-md-10 text-center">
                         <button className="btn btn-dark" onClick={() => setCount(0)}>Reset</button>
                     </div>
