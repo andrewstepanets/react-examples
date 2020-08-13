@@ -1,8 +1,9 @@
 import React from 'react';
+import CardList from '../card-list';
 
 const App = () => {
     return(
-        <h1>Github Users App</h1>
+        <CardList />
     );
 };
 
