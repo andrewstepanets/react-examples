@@ -12,7 +12,7 @@ const Form = props => {
             });
     }
     return(
-        <form>
+        <form onSubmit={handleSubmit}>
             <input 
                 type="text"
                 value={username}
