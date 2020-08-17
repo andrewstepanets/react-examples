@@ -3,7 +3,7 @@ import CardList from '../card-list';
 
 const App = () => {
     return(
-        <CardList />
+            <CardList />
     );
 };
 
