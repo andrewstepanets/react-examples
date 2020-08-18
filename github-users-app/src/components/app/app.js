@@ -9,10 +9,17 @@ const App = () => {
         setCards(cards.concat(cardInfo))
     }
 
+    const removeCard = key => {
+        const removedCard = cards
+            .slice(0, key)
+            .concat(cards.slice(key + 1, key.length));
+        setCards(removedCard);
+    }
+
     return(
         <div>
             <Form onSubmit={addNewCard} />
-            <CardList cards={cards} />
+            <CardList cards={cards} handleClick={removeCard}/>
         </div>
     );
 };

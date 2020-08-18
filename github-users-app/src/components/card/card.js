@@ -8,6 +8,7 @@ const Card = props => {
             <div>
                 <div style={{ fontWeight: 'bold' }}>{props.name}</div>
                 <div>{props.blog}</div>
+                <button onClick={props.handleClick} className="btn btn-danger">Remove</button>
             </div>
         </div>
     );
