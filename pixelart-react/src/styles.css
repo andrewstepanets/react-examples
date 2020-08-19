@@ -1,0 +1,18 @@
+.white {
+    background: white;
+}
+.lightblue {
+    background: rgb(0, 188, 212);
+}
+.blue {
+    background: rgb(3, 169, 244);
+}
+.darkblue {
+    background: rgb(33, 150, 243);
+}
+.pixel {
+    width: 30px;
+    height: 30px;
+    border: 1px solid lightgray;
+    box-sizing: border-box;
+}

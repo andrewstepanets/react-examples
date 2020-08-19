@@ -1,9 +1,10 @@
 import React from 'react';
+import Pixel from './Pixel';
 
 const App = () => {
     return(
-        <div>
-            <h1 className="text-center">It works</h1>
+        <div className="App">
+            <Pixel />
         </div>
     )
 }
