@@ -1,10 +1,10 @@
 import React from 'react';
-import Pixel from './Pixel';
+import Canvas from './Canvas';
 
 const App = () => {
     return(
-        <div className="App">
-            <Pixel />
+        <div className="app">
+            <Canvas />
         </div>
     )
 }

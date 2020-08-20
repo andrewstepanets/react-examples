@@ -16,3 +16,15 @@
     border: 1px solid lightgray;
     box-sizing: border-box;
 }
+.app {
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.canvas {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px;
+}
