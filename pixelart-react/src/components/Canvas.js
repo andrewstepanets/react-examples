@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import Colors from './Colors';
+import Colors from '../Colors';
 import Pixel from './Pixel';
 
 
