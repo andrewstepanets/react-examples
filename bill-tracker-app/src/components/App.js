@@ -7,12 +7,16 @@ import NavBar from './NavBar';
 
 const  App = () => {
   return (
-    <div>
-      <AddBill />
-      <AddCategory />
-      <BillsTable />
-      <Chart />
+    <div className="App">
       <NavBar />
+      <div className="container flex">
+        <div className="w-1/2">
+          <BillsTable />
+        </div>
+        <div className="w-1/2">
+          <Chart />
+        </div>
+      </div>
     </div>
   );
 }
