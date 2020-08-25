@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AddCategory = () => {
+const AddCategory = (props) => {
     const [category, setCategory] = useState();
 
     const handleChange = e => {
@@ -16,14 +16,24 @@ const AddCategory = () => {
         props.onSubmit(category);
     }
     return(
-        <form>
-            <h1>Enter a category of bills</h1>
-            <p>E.g. 'Electricity' or 'Gas' or 'Internet'</p>
-            <input type="text" 
-                placegolder="Add Category" 
-                value={category} 
-                onChange={handleChange}/>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Add</button>
+        <form className="h-100 w-full flex items-center justify-center font-sans">
+            <div className="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
+                <div className="mb-4">
+                    <h1 className="text-gray-600">Enter a category of bills</h1>
+                    <p>E.g. 'Electricity' or 'Gas' or 'Internet'</p>
+                    <div className="flex mt-4">
+                        <input
+                            className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-gray-700" 
+                            type="text"
+                            placegolder="Add Category"
+                            value={category}
+                            onChange={handleChange} />
+                        <button
+                            className="flex-no-shrink p-2 border-2 rounded bg-teal-400 text-white border-teal hover:text-white hover:bg-teal"
+                            onClick={handleSubmit}>Add</button>
+                    </div>
+                </div>
+            </div>
         </form>
     )
 }

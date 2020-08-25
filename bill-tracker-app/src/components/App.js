@@ -6,7 +6,13 @@ import Chart from './Chart';
 import NavBar from './NavBar';
 
 const  App = () => {
-  const [shouldShowAddCategory, setShouldShowAddCategory] = useState(true)
+  const [shouldShowAddCategory, setShouldShowAddCategory] = useState(true);
+  const [categories, setCategories] = useState([]);
+
+  const addCategory = category => {
+    setCategories([...categories, category]);
+    setShouldShowAddCategory(false);
+  }
   return (
     <div className="App">
       {
