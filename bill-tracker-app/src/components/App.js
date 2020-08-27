@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AddBill from './AddBill';
 import AddCategory from './AddCategory';
 import BillsTable from './BillsTable';
@@ -10,9 +10,26 @@ const  App = () => {
   const [categories, setCategories] = useState([]);
 
   const addCategory = category => {
-    setCategories([...categories, category]);
-    setShouldShowAddCategory(false);
+    const updatedCategories = [...(categories || []), category]
+    setCategories(updatedCategories)
+    setShouldShowAddCategory(false)
+    localStorage.setItem('categories', JSON.stringify(updatedCategories))
   }
+
+  useEffect(() => {
+    const categoriesInLocalStorage = JSON.parse(
+      localStorage.getItem('categories')
+    );
+
+    if (categoriesInLocalStorage !== categories) {
+      setCategories(categoriesInLocalStorage)
+    }
+
+    if(!categoriesInLocalStorage) {
+      setShouldShowAddCategory(true);
+    }
+  }, []);
+
   return (
     <div className="App">
       {
