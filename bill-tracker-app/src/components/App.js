@@ -6,7 +6,7 @@ import Chart from './Chart';
 import NavBar from './NavBar';
 
 const  App = () => {
-  const [shouldShowAddCategory, setShouldShowAddCategory] = useState(true);
+  const [shouldShowAddCategory, setShouldShowAddCategory] = useState(false);
   const [categories, setCategories] = useState([]);
 
   const addCategory = category => {
@@ -14,6 +14,10 @@ const  App = () => {
     setCategories(updatedCategories)
     setShouldShowAddCategory(false)
     localStorage.setItem('categories', JSON.stringify(updatedCategories))
+  }
+
+  const showAddCategory = () => {
+    setShouldShowAddCategory(true);
   }
 
   useEffect(() => {
@@ -37,7 +41,10 @@ const  App = () => {
            <AddCategory onSubmit={addCategory}/> 
            ) : (
             <div>
-              <NavBar />
+              <NavBar 
+                categories={categories}
+                showAddCategory={showAddCategory}
+                />
               <div className="container flex">
                 <div className="w-1/2">
                   <BillsTable />
