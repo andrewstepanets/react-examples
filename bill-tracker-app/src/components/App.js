@@ -6,8 +6,11 @@ import Chart from './Chart';
 import NavBar from './NavBar';
 
 const  App = () => {
-  const [shouldShowAddCategory, setShouldShowAddCategory] = useState(false);
-  const [categories, setCategories] = useState([]);
+  
+  const [shouldShowAddCategory, setShouldShowAddCategory] = useState(false)
+  const [shouldShowAddBill, setShouldShowAddBill] = useState(true)
+  const [categories, setCategories] = useState([])
+  const [bills, setBills] = useState([])
 
   const addCategory = category => {
     const updatedCategories = [...(categories || []), category]
@@ -16,35 +19,41 @@ const  App = () => {
     localStorage.setItem('categories', JSON.stringify(updatedCategories))
   }
 
-  const showAddCategory = () => {
-    setShouldShowAddCategory(true);
+  const addBill = (amount, category, date) => {
+    const bill = { amount, category, date }
+    const updatedBills = [...(bills || []), bill]
+    setBills(updatedBills)
+    setShouldShowAddBill(false)
+    localStorage.setItem('bills', JSON.stringify(updatedBills))
   }
 
   useEffect(() => {
     const categoriesInLocalStorage = JSON.parse(
       localStorage.getItem('categories')
-    );
+    )
+    const billsInLocalStorage = JSON.parse(localStorage.getItem('bills'))
 
-    if (categoriesInLocalStorage !== categories) {
-      setCategories(categoriesInLocalStorage)
-    }
+    setCategories(categoriesInLocalStorage)
+    setBills(billsInLocalStorage)
 
-    if(!categoriesInLocalStorage) {
-      setShouldShowAddCategory(true);
+    if (!categoriesInLocalStorage) {
+      setShouldShowAddCategory(true)
     }
-  }, []);
+  }, [])
+
+  const showAddCategory = () => {
+    setShouldShowAddCategory(true)
+  }
 
   return (
     <div className="App">
-      {
-        shouldShowAddCategory ? (
-           <AddCategory onSubmit={addCategory}/> 
-           ) : (
+      {shouldShowAddCategory ? (
+        <AddCategory onSubmit={addCategory} />
+      ) : shouldShowAddBill ? (
+        <AddBill onSubmit={addBill} categories={categories} />
+      ) : (
             <div>
-              <NavBar 
-                categories={categories}
-                showAddCategory={showAddCategory}
-                />
+              <NavBar categories={categories} showAddCategory={showAddCategory} />
               <div className="container flex">
                 <div className="w-1/2">
                   <BillsTable />
@@ -54,8 +63,7 @@ const  App = () => {
                 </div>
               </div>
             </div>
-           )
-      }
+          )}
     </div>
   );
 }
