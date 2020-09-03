@@ -10,8 +10,8 @@ const App = () => {
       <header>
         <img src={image} alt="Logo"/>
         <h1>Collapsible</h1>
-        <Collapsible />
       </header>
+      <Collapsible />
     </AppContainer>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { CollapsibleWrapper, Title, Panel, ItemWrapper } from './Collapsible.styles';
 import { items } from '../../data';
 
@@ -6,12 +6,18 @@ import { items } from '../../data';
 const Item = ({ item }) => {
 
     const [state, setState] = useState(false);
+    const panelBody = useRef(null);
     const { title, content } = item;
+
+    console.log(panelBody.current);
+
+    const currentHeight = state ? panelBody.current.clientHeight : 0;
+
     return(
         <ItemWrapper className={state ? 'isExpanded' : null}>
             <Title onClick={() => setState(!state)}>{ title }</Title>
-            <Panel>
-                <div>
+            <Panel style={{ height: `${currentHeight}px` }}>
+                <div ref={panelBody}>
                     {content}
                 </div>
             </Panel>
