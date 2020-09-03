@@ -1,15 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { CollapsibleWrapper, Title, Panel, ItemWrapper } from './Collapsible.styles';
-import { items } from '../../data';
+// import { items } from '../../data';
 
 
 const Item = ({ item }) => {
 
     const [state, setState] = useState(false);
     const panelBody = useRef(null);
+    
     const { title, content } = item;
 
-    console.log(panelBody.current);
 
     const currentHeight = state ? panelBody.current.clientHeight : 0;
 
@@ -26,10 +26,31 @@ const Item = ({ item }) => {
 }
 
 export const Collapsible = () => {
+
+
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+
+        fetch('https://randomuser.me/api/?results=20')
+            .then(response => response.json())
+            .then(data => data.results.map( user => (
+                {
+                    title: `${user.name.first} ${user.name.last}`,
+                    content: `${user.login.username}`
+                }
+            )))
+            .then(users => setUsers(users))
+            .catch(err => console.log(err))
+
+            return(() => console.log('unmounting'))
+
+    }, []);
+
     return(
         <CollapsibleWrapper>
             {
-                 items.map(item => <Item key={item.title} item={item} />)
+                 users.map(item => <Item key={item.title} item={item} />)
             }
         </CollapsibleWrapper>
     )
