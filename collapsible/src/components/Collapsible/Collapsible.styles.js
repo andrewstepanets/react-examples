@@ -26,4 +26,13 @@ export const Panel = styled.div`
     div {
         padding: 0 15px 20px;
     }
+    display: none;
+`;
+
+export const ItemWrapper = styled.div`
+    &.isExpanded {
+        ${Panel} {
+            display: block;
+        }
+    }
 `;
