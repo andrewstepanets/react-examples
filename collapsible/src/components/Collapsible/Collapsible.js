@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { CollapsibleWrapper, Title, Panel, ItemWrapper } from './Collapsible.styles';
+import { Loader } from '../';
 // import { items } from '../../data';
 
 
@@ -27,11 +28,12 @@ const Item = ({ item }) => {
 
 export const Collapsible = () => {
 
-
+    const [isLoading, setLoading] = useState(true);
     const [users, setUsers] = useState([])
 
     useEffect(() => {
 
+        setLoading(true);
         fetch('https://randomuser.me/api/?results=20')
             .then(response => response.json())
             .then(data => data.results.map( user => (
@@ -40,8 +42,14 @@ export const Collapsible = () => {
                     content: `${user.login.username}`
                 }
             )))
-            .then(users => setUsers(users))
-            .catch(err => console.log(err))
+            .then(users => {
+                setUsers(users);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.log(err);
+                setLoading(true);
+            })
 
             return(() => console.log('unmounting'))
 
@@ -50,7 +58,7 @@ export const Collapsible = () => {
     return(
         <CollapsibleWrapper>
             {
-                 users.map(item => <Item key={item.title} item={item} />)
+                 isLoading ? <Loader /> : users.map(item => <Item key={item.title} item={item} />)
             }
         </CollapsibleWrapper>
     )
