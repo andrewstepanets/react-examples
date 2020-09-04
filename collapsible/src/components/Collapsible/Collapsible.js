@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { CollapsibleWrapper, Title, Panel, ItemWrapper } from './Collapsible.styles';
+import { CollapsibleWrapper, Title, Panel, ItemWrapper, ButtonWrapper } from './Collapsible.styles';
 import { Loader } from '../';
 // import { items } from '../../data';
 import { useContactsAPI } from '../../hooks';
@@ -29,10 +29,13 @@ const Item = ({ item }) => {
 
 export const Collapsible = () => {
 
-    const [{ isLoading, users }] = useContactsAPI();
+    const [{ isLoading, users }, fetchUsers] = useContactsAPI();
 
     return(
         <CollapsibleWrapper>
+        <ButtonWrapper>
+                <button onClick={() => fetchUsers()}>Fetch New Users</button>
+        </ButtonWrapper>
             {
                  isLoading ? <Loader /> : users.map(item => <Item key={item.title} item={item} />)
             }

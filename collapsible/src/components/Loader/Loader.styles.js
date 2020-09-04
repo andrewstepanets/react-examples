@@ -14,19 +14,21 @@ const spin = keyframes`
 `;
 
 export const LoaderWrapper = styled.div`
-    position: absolute;
+    /* position: absolute;
     top: 50%;
-    left: 50%;
-    width: 100px;
-    height: 100px;
-    transform: translate(-50%, -50%);
+    left: 50%; */
+    width: 100%;
+    height: 100%;
+    /* transform: translate(-50%, -50%); */
+    display: grid;
+    place-items: center;
 `;
 export const LoaderIcon = styled.div`
     width: 100px;
     height: 100px;
-    position: absolute;
+    /* position: absolute;
     top: 0;
-    left: 0;
+    left: 0; */
     background: url(${loaderIcon}) no-repeat 0 0;
     background-size: 100px 100px;
     animation: ${spin} 500ms infinite linear;

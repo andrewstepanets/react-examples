@@ -59,3 +59,29 @@ export const ItemWrapper = styled.div`
             transition: height 0.3s ease-out;
         }
 `;
+
+export const ButtonWrapper = styled.div`
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+    button {
+        color: #78D0FC;
+        text-transform: uppercase;
+        background: #ffffff;
+        padding: 20px;
+        border: 4px solid #78D0FC;
+        border-radius: 6px;
+        display: inline-block;
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+    }
+    button:hover {
+        color: #494949;
+        border-radius: 50px;
+        border-color: #494949;
+        transition: all 0.3s ease 0s;
+    }
+    button:focus {
+        outline: none;
+    }
+`;

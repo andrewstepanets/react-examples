@@ -7,30 +7,34 @@ const useContactsAPI = () => {
 
     useEffect(() => {
 
-        setLoading(true);
-        fetch('https://randomuser.me/api/?results=20')
-            .then(response => response.json())
-            .then(data => data.results.map(user => (
-                {
-                    title: `${user.name.first} ${user.name.last}`,
-                    content: `${user.login.username}`
-                }
-            )))
-            .then(users => {
-                setUsers(users);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.log(err);
-                setLoading(true);
-                setError(true);
-            })
-
-        // return(() => console.log('unmounting'))
-
+        fetchUsers();
+       
     }, []);
 
-    return [{ users, isLoading, isError }];
+    const fetchUsers = async () => {
+        setLoading(true);
+        await fetch('https://randomuser.me/api/?results=20')
+                .then(response => response.json())
+                .then(data => data.results.map(user => (
+                    {
+                        title: `${user.name.first} ${user.name.last}`,
+                        content: `${user.login.username}`
+                    }
+                )))
+                .then(users => {
+                    setUsers(users);
+                    setLoading(false);
+                })
+                .catch(err => {
+                    console.log(err);
+                    setLoading(true);
+                    setError(true);
+                })
+
+        // return(() => console.log('unmounting'))
+    };
+
+    return [{ users, isLoading, isError }, fetchUsers];
 }
 
 export default useContactsAPI;
