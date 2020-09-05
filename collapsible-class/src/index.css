@@ -3,3 +3,43 @@ header img.img-fluid {
     margin: auto;
     display: block;
 }
+
+/* Simple showing-hide card text */
+
+/* .card .card-body {
+    display: none;
+}
+.card.is-expanded .card-body {
+    display: flex;
+} */
+
+/* Simple animating */
+
+/* .card .card-body {
+    min-height: 0;
+    padding: 0 1.25rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.525, 0.66, 0.495, 1.4);
+}
+.card.is-expanded .card-body {
+    max-height: 200px;
+    padding: 1.25rem;
+} */
+
+/* JS Calculating height */
+
+.card {
+    border: none;
+}
+.card .card-header {
+    cursor: pointer;
+}
+.card .card-collapse {
+    overflow: hidden;
+    padding: 0 1.25rem;
+    transition: height 0.3s ease-out;
+}
+.card.is-expanded .card-body {
+
+}

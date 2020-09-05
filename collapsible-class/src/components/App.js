@@ -8,12 +8,12 @@ class App extends React.Component {
       <div>
         <header>
           <img className="img-fluid" src={image} />
-          <h1>Collapsible Content</h1>
+          <h1 className="text-center">Collapsible Content</h1>
         </header>
         <div className="content">
           <Collapsible title="Overview">
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque, expedita?
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam maxime cum neque doloremque magnam vero!
             </p>
           </Collapsible>
           <Collapsible title="Features">
