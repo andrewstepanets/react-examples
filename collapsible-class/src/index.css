@@ -1,1 +1,5 @@
-
+header img.img-fluid {
+    max-width: 200px;
+    margin: auto;
+    display: block;
+}
