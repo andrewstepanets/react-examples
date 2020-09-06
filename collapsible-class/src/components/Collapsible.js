@@ -4,10 +4,9 @@ import PropTypes from 'prop-types';
 
 class Collapsible extends Component {
 
-
-    state = {
-        isExpanded: false
-    }
+        state = {
+            isExpanded: false
+        }
 
     handleToggle(e) {
         e.preventDefault();
