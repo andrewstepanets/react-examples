@@ -3,12 +3,29 @@ import { gsap } from 'gsap';
 import logo from './images/img_react-gsap.png';
 import './App.css';
 
+const sections = [
+  {
+    title: 'Title 1',
+    subtitle: 'Subtitle 1'
+  },
+  {
+    title: 'Title 2',
+    subtitle: 'Subtitle 2'
+  },
+  {
+    title: 'Title 3',
+    subtitle: 'Subtitle 3'
+  },
+]
+
 function App() {
 
 
   const [background, setBackground] = useState('#262626');
 
   const headerRef = useRef(null);
+  const revealRefs = useRef([]);
+  revealRefs.current = [];
 
   const toggleBackground = () => {
     const color = background !== '#262626' ? '#5a7d95' : '#1b4943';
@@ -32,6 +49,13 @@ function App() {
       })
   }, [headerRef])
 
+  const addToRefs = (el) => {
+    if( el && !revealRefs.current.includes(el) ) {
+      revealRefs.current.push(el);
+      console.log(revealRefs.current);
+    }
+  }
+
   return (
     <div className="App">
       <header ref={headerRef} className="App-header">
@@ -42,10 +66,16 @@ function App() {
         </p>
       </header>
       <main className="App-main">
-        <div className="App-section">
-          <h2>Title</h2>
-          <p>Subtitle</p>
-        </div>
+        {
+          sections.map(({ title, subtitle}) => {
+              return (
+                <div key={title} className="App-section" ref={addToRefs}>
+                  <h2>{title}</h2>
+                  <p>{subtitle}</p>
+                </div>
+              )
+          })
+        }
       </main>
     </div>
   );
