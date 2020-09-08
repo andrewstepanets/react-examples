@@ -5,7 +5,23 @@ import './App.css';
 
 function App() {
 
+
+  const [background, setBackground] = useState('#262626');
+
   const headerRef = useRef(null);
+
+  const toggleBackground = () => {
+    const color = background !== '#262626' ? '#5a7d95' : '#1b4943';
+    setBackground(color);
+  }
+
+  useEffect(() => {
+    gsap.to(headerRef.current, {
+      duration: 1,
+      backgroundColor: background,
+      ease: 'none'
+    })
+  }, [background]);
 
   useEffect(() => {
       gsap.from(headerRef.current, {
@@ -20,6 +36,7 @@ function App() {
     <div className="App">
       <header ref={headerRef} className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <button onClick={() => toggleBackground()}>Toggle Background</button>
         <p>
           Scroll down to see sections being revealed by ScrollTrigger.
         </p>
