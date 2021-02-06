@@ -1,15 +1,19 @@
 
 import { useEffect, useState } from 'react';
+import CardList from 'components/card-list/card-list';
 
 function App() {
   const [count, setCount] = useState(0);
   const [monsters, setMonsters] = useState([])
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(res => res.json())
-      .then(users => setMonsters(users))
-      .catch(error => console.log(`Something wrong with API ${error}`))
+    async function fetchData() {
+      await fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res => res.json())
+        .then(users => setMonsters(users))
+        .catch(error => console.log(`Something wrong with API ${error}`))
+    }
+    fetchData();
   })
 
   return (
@@ -26,11 +30,11 @@ function App() {
         </button>
         <h2>Your clicked {count} times</h2>
       </header>
-      <main>
+      <CardList>
         {monsters.map(monster => (
-          <h2 key={monster.name}>{monster.name}</h2>
+          <h2 key={monster.id}>{monster.name}</h2>
         ))}
-      </main>
+      </CardList>
     </div>
   );
 }
