@@ -30,11 +30,7 @@ function App() {
         </button>
         <h2>Your clicked {count} times</h2>
       </header>
-      <CardList>
-        {monsters.map(monster => (
-          <h2 key={monster.id}>{monster.name}</h2>
-        ))}
-      </CardList>
+      <CardList monsters={monsters} />
     </div>
   );
 }

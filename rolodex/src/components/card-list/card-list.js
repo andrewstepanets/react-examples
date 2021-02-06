@@ -1,10 +1,13 @@
 import React from 'react';
-import './card-list.css';
+import Card from 'components/card/card'
+import './card-list.scss';
 
-function CardList({ children }) {
+function CardList({ monsters }) {
     return (
         <div className="card-list">
-            { children}
+            {monsters.map(monster => (
+                <Card key={monster.id} monster={monster} />
+            ))}
         </div>
     )
 }
