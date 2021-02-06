@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import CardList from 'components/card-list/card-list';
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [monsters, setMonsters] = useState([])
+  const [monsters, setMonsters] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -14,23 +14,26 @@ function App() {
         .catch(error => console.log(`Something wrong with API ${error}`))
     }
     fetchData();
-  })
+  });
+
+  // const filteredMonsters = monsters.filter(monster =>
+  //   monster.name.toLowerCase().includes(search).toLowerCase()
+  // )
+  const filteredMonsters = monsters.filter(monster => (
+    monster.name
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  ))
 
   return (
     <div>
-      <header>
-        <h1>Monster Rolodex</h1>
-        <button
-          onClick={() => setCount(count + 1)}>
-          +
-        </button>
-        <button
-          onClick={() => setCount(count - 1)}>
-          -
-        </button>
-        <h2>Your clicked {count} times</h2>
-      </header>
-      <CardList monsters={monsters} />
+      <h1>Monster Rolodex</h1>
+      <input
+        type='search'
+        placeholder='Search Monsters'
+        onChange={(e) => setSearch(e.target.value)} />
+
+      <CardList monsters={filteredMonsters} />
     </div>
   );
 }
