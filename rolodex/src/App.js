@@ -28,6 +28,7 @@ function App() {
       .includes(search.toLowerCase())
   ))
 
+
   return (
     <div className="wrapper">
       <h1>Monster Rolodex</h1>
