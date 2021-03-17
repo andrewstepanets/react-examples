@@ -12,6 +12,7 @@ export const CardContainer = styled.div`
   flex-direction: column;
   padding: 30px;
   font-size: 20px;
+  margin-bottom: 10px;
 
   & > button {
     background-color: white;
